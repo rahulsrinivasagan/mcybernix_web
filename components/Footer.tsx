@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -10,8 +9,6 @@ export default function Footer() {
   const [email, setEmail] = useState("");
   const footerRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname();
-  const isAbout = pathname === "/about";
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +27,9 @@ export default function Footer() {
 
     // Play smooth staggered entry animation
     const playFooterEntry = () => {
-      const items = footerEl.querySelectorAll(".f-brand, .f-col, .news, .f-bot");
+      const items = footerEl.querySelectorAll(
+        ".f-brand, .f-col, .news, .f-bot"
+      );
       if (items.length === 0) return;
 
       gsap.killTweensOf(items);
@@ -69,7 +68,7 @@ export default function Footer() {
       <div className="wrap">
         <div className="f-grid" ref={gridRef}>
           <div className="f-brand">
-            <a className="brand" href={isAbout ? "/#home" : "#home"}>
+            <a className="brand" href="/">
               <span className="brand-mark">
                 <img
                   alt="MCybernix Logo"
@@ -85,20 +84,20 @@ export default function Footer() {
               </span>
             </a>
             <p>
-              We help startups and businesses build, automate, and grow with smart
-              digital solutions.
+              We help startups and businesses build, automate, and grow with
+              smart digital solutions.
             </p>
             <div className="socials">
-              <a aria-label="LinkedIn" href={isAbout ? "/#contact" : "#contact"}>
+              <a aria-label="LinkedIn" href="/contact">
                 in
               </a>
-              <a aria-label="X" href={isAbout ? "/#contact" : "#contact"}>
+              <a aria-label="X" href="/contact">
                 ✕
               </a>
-              <a aria-label="GitHub" href={isAbout ? "/#contact" : "#contact"}>
+              <a aria-label="GitHub" href="/contact">
                 ◍
               </a>
-              <a aria-label="Instagram" href={isAbout ? "/#contact" : "#contact"}>
+              <a aria-label="Instagram" href="/contact">
                 ◎
               </a>
             </div>
@@ -106,25 +105,25 @@ export default function Footer() {
 
           <div className="f-col">
             <h5>Quick Links</h5>
-            <a href={isAbout ? "/#home" : "#home"}>Home</a>
+            <a href="/">Home</a>
             <a href="/about">About Us</a>
-            <a href={isAbout ? "/#services" : "#services"}>Services</a>
-            <a href={isAbout ? "/#blog" : "#blog"}>Blog</a>
-            <a href={isAbout ? "/#contact" : "#contact"}>Contact</a>
+            <a href="/#services">Services</a>
+            <a href="/blog">Blog</a>
+            <a href="/contact">Contact</a>
           </div>
 
           <div className="f-col">
             <h5>Services</h5>
-            <a href={isAbout ? "/#services" : "#services"}>Web Development</a>
-            <a href={isAbout ? "/#services" : "#services"}>AI Automation</a>
-            <a href={isAbout ? "/#services" : "#services"}>App Development</a>
+            <a href="/#services">Web Development</a>
+            <a href="/#services">AI Automation</a>
+            <a href="/#services">App Development</a>
           </div>
 
           <div className="f-col">
             <h5>Company</h5>
-            <a href={isAbout ? "/#contact" : "#contact"}>Careers</a>
-            <a href={isAbout ? "/#contact" : "#contact"}>Privacy Policy</a>
-            <a href={isAbout ? "/#contact" : "#contact"}>Terms &amp; Conditions</a>
+            <a href="/contact">Careers</a>
+            <a href="/contact">Privacy Policy</a>
+            <a href="/contact">Terms &amp; Conditions</a>
           </div>
 
           <div className="news">
