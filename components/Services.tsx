@@ -22,7 +22,7 @@ export default function Services() {
             competition.
           </p>
 
-          <div style={{ marginTop: "30px" }}>
+          <div className="wwd-benefits">
             <div className="benefit reveal">
               <div className="bi">⚙</div>
               <div>
@@ -57,9 +57,8 @@ export default function Services() {
           </div>
 
           <a
-            className="btn btn-primary reveal"
+            className="btn btn-primary reveal wwd-btn"
             href="#services"
-            style={{ marginTop: "30px" }}
           >
             Explore All Services <span className="ic">→</span>
           </a>

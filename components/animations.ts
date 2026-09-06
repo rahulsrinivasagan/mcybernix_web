@@ -149,7 +149,7 @@ export function initMcybernixAnimations() {
         const stackTl = gsap.timeline({
           scrollTrigger: {
             trigger: aboutSec,
-            start: "top 70px",
+            start: "top top",
             end: "+=2200",
             pin: true,
             scrub: 0.8,
