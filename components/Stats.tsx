@@ -47,9 +47,9 @@ export default function Stats() {
 
     const trigger = ScrollTrigger.create({
       trigger: statsEl,
-      start: "top 88%",
+      start: "top 78%",
+      once: true,
       onEnter: () => animateCounters(),
-      onEnterBack: () => animateCounters(),
     });
 
     return () => {

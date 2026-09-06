@@ -132,11 +132,8 @@ export default function Testimonials() {
     const st = ScrollTrigger.create({
       trigger: el,
       start: "top 80%",
-      once: false,
+      once: true,
       onEnter: () => {
-        setIsActive(true);
-      },
-      onEnterBack: () => {
         setIsActive(true);
       },
     });

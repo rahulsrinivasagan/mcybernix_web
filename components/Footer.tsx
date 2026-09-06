@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -9,6 +10,8 @@ export default function Footer() {
   const [email, setEmail] = useState("");
   const footerRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const isAbout = pathname === "/about";
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,9 +54,9 @@ export default function Footer() {
     // ScrollTrigger: only triggers when user scrolls into the footer, not on top reload
     const st = ScrollTrigger.create({
       trigger: footerEl,
-      start: "top 92%",
+      start: "top 90%",
+      once: true,
       onEnter: () => playFooterEntry(),
-      onEnterBack: () => playFooterEntry(),
     });
 
     return () => {
@@ -66,7 +69,7 @@ export default function Footer() {
       <div className="wrap">
         <div className="f-grid" ref={gridRef}>
           <div className="f-brand">
-            <a className="brand" href="#home">
+            <a className="brand" href={isAbout ? "/#home" : "#home"}>
               <span className="brand-mark">
                 <img
                   alt="MCybernix Logo"
@@ -86,16 +89,16 @@ export default function Footer() {
               digital solutions.
             </p>
             <div className="socials">
-              <a aria-label="LinkedIn" href="#contact">
+              <a aria-label="LinkedIn" href={isAbout ? "/#contact" : "#contact"}>
                 in
               </a>
-              <a aria-label="X" href="#contact">
+              <a aria-label="X" href={isAbout ? "/#contact" : "#contact"}>
                 ✕
               </a>
-              <a aria-label="GitHub" href="#contact">
+              <a aria-label="GitHub" href={isAbout ? "/#contact" : "#contact"}>
                 ◍
               </a>
-              <a aria-label="Instagram" href="#contact">
+              <a aria-label="Instagram" href={isAbout ? "/#contact" : "#contact"}>
                 ◎
               </a>
             </div>
@@ -103,25 +106,25 @@ export default function Footer() {
 
           <div className="f-col">
             <h5>Quick Links</h5>
-            <a href="#home">Home</a>
-            <a href="#about">About Us</a>
-            <a href="#services">Services</a>
-            <a href="#blog">Blog</a>
-            <a href="#contact">Contact</a>
+            <a href={isAbout ? "/#home" : "#home"}>Home</a>
+            <a href="/about">About Us</a>
+            <a href={isAbout ? "/#services" : "#services"}>Services</a>
+            <a href={isAbout ? "/#blog" : "#blog"}>Blog</a>
+            <a href={isAbout ? "/#contact" : "#contact"}>Contact</a>
           </div>
 
           <div className="f-col">
             <h5>Services</h5>
-            <a href="#services">Web Development</a>
-            <a href="#services">AI Automation</a>
-            <a href="#services">App Development</a>
+            <a href={isAbout ? "/#services" : "#services"}>Web Development</a>
+            <a href={isAbout ? "/#services" : "#services"}>AI Automation</a>
+            <a href={isAbout ? "/#services" : "#services"}>App Development</a>
           </div>
 
           <div className="f-col">
             <h5>Company</h5>
-            <a href="#contact">Careers</a>
-            <a href="#contact">Privacy Policy</a>
-            <a href="#contact">Terms &amp; Conditions</a>
+            <a href={isAbout ? "/#contact" : "#contact"}>Careers</a>
+            <a href={isAbout ? "/#contact" : "#contact"}>Privacy Policy</a>
+            <a href={isAbout ? "/#contact" : "#contact"}>Terms &amp; Conditions</a>
           </div>
 
           <div className="news">

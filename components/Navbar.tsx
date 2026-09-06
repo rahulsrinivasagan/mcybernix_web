@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isAbout = pathname === "/about";
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
@@ -17,7 +20,7 @@ export default function Navbar() {
     <nav className="nav">
       <div className="wrap">
         <div className="nav-shell" id="navShell">
-          <a className="brand" href="#home">
+          <a className="brand" href={isAbout ? "/#home" : "#home"}>
             <span className="brand-mark">
               <img
                 alt="MCybernix Logo"
@@ -34,19 +37,21 @@ export default function Navbar() {
           </a>
 
           <div className="nav-links">
-            <a className="active" href="#home">
+            <a className={isAbout ? "" : "active"} href={isAbout ? "/#home" : "#home"}>
               Home
             </a>
-            <a href="#about">About Us</a>
-            <a href="#services">Services</a>
-            <a href="#blog">Blog</a>
-            <a href="#contact">Contact</a>
+            <a className={isAbout ? "active" : ""} href="/about">
+              About Us
+            </a>
+            <a href={isAbout ? "/#services" : "#services"}>Services</a>
+            <a href={isAbout ? "/#blog" : "#blog"}>Blog</a>
+            <a href={isAbout ? "/#contact" : "#contact"}>Contact</a>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <a
               className="btn btn-primary"
-              href="#contact"
+              href={isAbout ? "/#contact" : "#contact"}
               style={{ padding: "11px 18px" }}
             >
               Let's Talk <span className="ic">→</span>
@@ -64,19 +69,19 @@ export default function Navbar() {
       </div>
 
       <div className={`mobile-menu ${isOpen ? "open" : ""}`} id="mobileMenu">
-        <a href="#home" onClick={closeMenu}>
+        <a href={isAbout ? "/#home" : "#home"} onClick={closeMenu}>
           Home
         </a>
-        <a href="#about" onClick={closeMenu}>
+        <a href="/about" onClick={closeMenu}>
           About Us
         </a>
-        <a href="#services" onClick={closeMenu}>
+        <a href={isAbout ? "/#services" : "#services"} onClick={closeMenu}>
           Services
         </a>
-        <a href="#blog" onClick={closeMenu}>
+        <a href={isAbout ? "/#blog" : "#blog"} onClick={closeMenu}>
           Blog
         </a>
-        <a href="#contact" onClick={closeMenu}>
+        <a href={isAbout ? "/#contact" : "#contact"} onClick={closeMenu}>
           Contact
         </a>
       </div>
