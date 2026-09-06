@@ -728,18 +728,21 @@ nav.nav {
 }
 
 /* ---------- what we do ---------- */
+#about.sec {
+  padding: 60px 0;
+}
+
 .wwd {
   display: grid;
   grid-template-columns: 0.86fr 1.14fr;
   gap: 64px;
-  align-items: start;
+  align-items: center;
   position: relative;
 }
 
 .wwd-left {
-  position: sticky;
-  top: 100px;
-  align-self: start;
+  position: relative;
+  align-self: center;
 }
 
 .wwd h2 {
@@ -787,16 +790,35 @@ nav.nav {
   line-height: 1.5;
 }
 
-/* sticky stack */
+/* sticky / pinned card slider */
 .stack-outer {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 40px;
+  width: 100%;
+}
+
+@media (min-width: 1001px) {
+  .stack-outer.is-desktop-slider {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0;
+    min-height: 480px;
+  }
+
+  .stack-outer.is-desktop-slider .svc-card {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    top: auto;
+    margin-bottom: 0;
+  }
 }
 
 .svc-card {
-  position: sticky;
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 0.92fr;
   gap: 18px;
@@ -804,17 +826,17 @@ nav.nav {
   padding: 36px;
   overflow: hidden;
   background: linear-gradient(135deg, #eef1ff 0%, #e6ecff 48%, #f4efff 100%);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: var(--shadow-card);
-  transform-origin: top center;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 20px 45px rgba(13, 19, 48, 0.09);
+  transform-origin: center top;
   will-change: transform, opacity;
   min-height: 460px;
   transition: box-shadow 0.3s ease;
 }
 
-#svc1 { top: 96px; z-index: 1; }
-#svc2 { top: 126px; z-index: 2; }
-#svc3 { top: 156px; z-index: 3; }
+#svc1 { z-index: 1; }
+#svc2 { z-index: 2; }
+#svc3 { z-index: 3; }
 
 .svc-card .num {
   width: 42px;
@@ -2081,9 +2103,16 @@ footer {
     gap: 30px;
   }
   .stack-outer {
+    display: flex;
+    flex-direction: column;
     gap: 28px;
   }
   .svc-card {
+    grid-column: auto;
+    grid-row: auto;
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
     grid-template-columns: 1fr;
     gap: 14px;
     padding: 26px;
@@ -2092,9 +2121,6 @@ footer {
   .svc-art {
     min-height: 200px;
   }
-  #svc1 { top: 80px; }
-  #svc2 { top: 104px; }
-  #svc3 { top: 128px; }
   .tst-canvas {
     padding: 36px 30px;
   }

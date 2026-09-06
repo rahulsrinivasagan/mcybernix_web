@@ -96,88 +96,165 @@ export function initMcybernixAnimations() {
        2. HOME: SERVICES / WHAT WE DO SECTION (#about)
        ========================================================== */
     const aboutSec = document.getElementById("about");
-    if (aboutSec) {
-      const wwdTl = gsap.timeline({
+    const stackOuter = document.getElementById("stackOuter");
+    const svc1 = document.getElementById("svc1");
+    const svc2 = document.getElementById("svc2");
+    const svc3 = document.getElementById("svc3");
+    const cards = [svc1, svc2, svc3].filter(Boolean) as HTMLElement[];
+
+    if (aboutSec && cards.length === 3) {
+      // 1. Initial entrance: Left elements and Card 1 enter concurrently (no delay!)
+      const wwdEntrance = gsap.timeline({
         scrollTrigger: {
           trigger: aboutSec,
-          start: "top 76%",
+          start: "top 78%",
           once: true,
         },
         defaults: { ease: "power3.out" },
       });
 
-      // Left column: Eyebrow, Heading, Rule, Lead, Benefits, CTA button
       const leftItems = aboutSec.querySelectorAll(
         ".wwd-left .eyebrow, .wwd-left h2, .wwd-left .rule, .wwd-left .lead, .wwd-left .benefit, .wwd-left .btn"
       );
       if (leftItems.length > 0) {
-        wwdTl.fromTo(
+        wwdEntrance.fromTo(
           leftItems,
-          { y: 28, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8, stagger: 0.09 }
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.65, stagger: 0.07 }
         );
       }
 
-      // Service cards staggered initial entrance
-      const svc1 = document.getElementById("svc1");
-      const svc2 = document.getElementById("svc2");
-      const svc3 = document.getElementById("svc3");
-      const cards = [svc1, svc2, svc3].filter(Boolean) as HTMLElement[];
+      // Card 1 enters immediately with the section title
+      wwdEntrance.fromTo(
+        svc1,
+        { y: 24, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.65 },
+        "<0.05"
+      );
 
-      if (cards.length > 0) {
-        wwdTl.fromTo(
-          cards,
-          { y: 40, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.85, stagger: 0.14 },
-          "-=0.55"
+      // 2. Responsive Card Slider
+      const mm = gsap.matchMedia();
+
+      // DESKTOP (> 1000px): Pinned Card Stacking Slider
+      mm.add("(min-width: 1001px)", () => {
+        if (stackOuter) {
+          stackOuter.classList.add("is-desktop-slider");
+        }
+
+        // Set initial card states
+        gsap.set(svc1, { zIndex: 1, scale: 1, y: 0, opacity: 1 });
+        gsap.set(svc2, { zIndex: 2, scale: 1, yPercent: 105, opacity: 0 });
+        gsap.set(svc3, { zIndex: 3, scale: 1, yPercent: 105, opacity: 0 });
+
+        const stackTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: aboutSec,
+            start: "top 70px",
+            end: "+=2200",
+            pin: true,
+            scrub: 0.8,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        // Phase 1 (0.0 to 0.4): Card 1 is active and readable
+        // Phase 2 (0.4 to 1.1): Card 2 slides in smoothly over Card 1
+        stackTl.to(
+          svc2,
+          {
+            yPercent: 0,
+            opacity: 1,
+            ease: "power2.out",
+            duration: 0.7,
+          },
+          0.4
         );
-      }
+        stackTl.to(
+          svc1,
+          {
+            scale: 0.94,
+            y: -22,
+            opacity: 0.65,
+            ease: "power2.out",
+            duration: 0.7,
+          },
+          0.4
+        );
 
-      // Desktop stacking cards scroll scrub
-      cards.forEach((c, i) => {
-        c.style.zIndex = (i + 1).toString();
+        // Phase 3 (1.1 to 1.7): Card 2 is SHOWCASED ALONE (reading window for Card 2)
+        // Nothing moves during this window, ensuring Card 2 is fully appreciated!
+
+        // Phase 4 (1.7 to 2.4): Card 3 slides in smoothly over Card 2
+        stackTl.to(
+          svc3,
+          {
+            yPercent: 0,
+            opacity: 1,
+            ease: "power2.out",
+            duration: 0.7,
+          },
+          1.7
+        );
+        stackTl.to(
+          svc2,
+          {
+            scale: 0.94,
+            y: -22,
+            opacity: 0.65,
+            ease: "power2.out",
+            duration: 0.7,
+          },
+          1.7
+        );
+        stackTl.to(
+          svc1,
+          {
+            scale: 0.88,
+            y: -44,
+            opacity: 0.35,
+            ease: "power2.out",
+            duration: 0.7,
+          },
+          1.7
+        );
+
+        // Phase 5 (2.4 to 3.0): Card 3 is SHOWCASED ALONE (reading window for Card 3)
+        // Card 3 is fully visible and stationary before the section unpins!
+
+        return () => {
+          if (stackOuter) {
+            stackOuter.classList.remove("is-desktop-slider");
+          }
+          gsap.set(cards, { clearProps: "all" });
+        };
       });
 
-      if (!isMobile && cards.length === 3) {
-        gsap.to(cards[0], {
-          scale: 0.95,
-          yPercent: -2,
-          opacity: 0.75,
-          ease: "power1.out",
-          scrollTrigger: {
-            trigger: cards[1],
-            start: "top 250px",
-            end: "top 126px",
-            scrub: 0.5,
-          },
-        });
+      // TABLET & MOBILE (<= 1000px): Natural vertical stack with individual reveals
+      mm.add("(max-width: 1000px)", () => {
+        if (stackOuter) {
+          stackOuter.classList.remove("is-desktop-slider");
+        }
+        gsap.set(cards, { clearProps: "all" });
 
-        gsap.to(cards[1], {
-          scale: 0.95,
-          yPercent: -2,
-          opacity: 0.75,
-          ease: "power1.out",
-          scrollTrigger: {
-            trigger: cards[2],
-            start: "top 280px",
-            end: "top 156px",
-            scrub: 0.5,
-          },
+        cards.forEach((card) => {
+          gsap.fromTo(
+            card,
+            { y: 30, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.7,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 88%",
+                once: true,
+              },
+            }
+          );
         });
-
-        gsap.to(cards[0], {
-          scale: 0.9,
-          yPercent: -4,
-          opacity: 0.5,
-          ease: "power1.out",
-          scrollTrigger: {
-            trigger: cards[2],
-            start: "top 280px",
-            end: "top 156px",
-            scrub: 0.5,
-          },
-        });
-      }
+      });
     }
 
     /* ==========================================================
