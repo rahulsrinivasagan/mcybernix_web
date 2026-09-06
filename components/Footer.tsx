@@ -27,7 +27,9 @@ export default function Footer() {
 
     // Play smooth staggered entry animation
     const playFooterEntry = () => {
-      const items = footerEl.querySelectorAll(".f-brand, .f-col, .news, .f-bot");
+      const items = footerEl.querySelectorAll(
+        ".f-brand, .f-col, .news, .f-bot",
+      );
       if (items.length === 0) return;
 
       gsap.killTweensOf(items);
@@ -44,7 +46,7 @@ export default function Footer() {
           duration: 0.85,
           stagger: 0.08,
           ease: "power3.out",
-        }
+        },
       );
     };
 
@@ -82,8 +84,8 @@ export default function Footer() {
               </span>
             </a>
             <p>
-              We help startups and businesses build, automate, and grow with smart
-              digital solutions.
+              We help startups and businesses build, automate, and grow with
+              smart digital solutions.
             </p>
             <div className="socials">
               <a aria-label="LinkedIn" href="#contact">
@@ -103,11 +105,11 @@ export default function Footer() {
 
           <div className="f-col">
             <h5>Quick Links</h5>
-            <a href="#home">Home</a>
-            <a href="#about">About Us</a>
-            <a href="#services">Services</a>
-            <a href="#blog">Blog</a>
-            <a href="#contact">Contact</a>
+            <a href="/#home">Home</a>
+            <a href="/#about">About Us</a>
+            <a href="/#services">Services</a>
+            <a href="/blog">Blog</a>
+            <a href="/contact">Contact</a>
           </div>
 
           <div className="f-col">
