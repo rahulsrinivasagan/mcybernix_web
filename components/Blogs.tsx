@@ -2,6 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import InternStories from "./InternStories";
+import { Caveat } from "next/font/google";
+
+const caveat = Caveat({ subsets: ["latin"], display: "swap" });
 
 export type Blog = {
   slug: string;
@@ -339,81 +343,59 @@ export default function Blogs() {
           </div>
 
           <div className="blogs-hero-visual" aria-hidden="true">
-            <div className="visual-hero-bg">
+            {/* Soft blob background behind the main image */}
+            <div style={{ position: 'absolute', inset: '-2%', background: 'linear-gradient(135deg, #e4e7ff, #f3f0ff)', borderRadius: '48px', transform: 'rotate(-3deg)', zIndex: -1 }}></div>
+
+            <div className="visual-card large-visual">
               <img
-                alt="Desk setup with laptop and notebook"
-                src="/images/blog_hero_bg.jpg"
+                alt="Professional working on laptop"
+                src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80"
               />
-              <div className="bg-gradient-overlay"></div>
             </div>
 
-            <div className="floating-blog-card card-web-dev">
-              <div className="fbc-img">
-                <img src="/images/blog-1.jpg" alt="Web Development" />
+            <div className="floating-note note-top">
+              <div className="mini-thumb">
+                <img 
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&q=80" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }} 
+                  alt="Building architecture" 
+                />
               </div>
-              <div className="fbc-content">
-                <span className="fbc-tag tag-blue">Web Development</span>
-                <h4>Building Scalable Web Apps with Next.js</h4>
-                <p>Learn how we structure modern web applications for performance and scalability.</p>
-                <div className="fbc-meta">
-                  <div className="fbc-author">
-                    <img src="/images/logo.png" alt="Team DevNest" />
-                    <div>
-                      <strong>Team DevNest</strong>
-                      <span>Apr 12, 2025</span>
-                    </div>
-                  </div>
-                  <button aria-label="Read more">→</button>
-                </div>
+              <div className="note-copy">
+                <span style={{ color: '#4d4bd2', fontWeight: 600, fontSize: '13px', marginBottom: '2px' }}>Latest Insights</span>
+                <strong>The Future of<br/>Digital Innovation</strong>
+                <small style={{ marginTop: '6px' }}>May 12, 2024 &nbsp;&bull;&nbsp; 5 min read</small>
               </div>
+              <button aria-label="Read more" style={{ background: '#f0f4ff', color: '#3b6cf6', boxShadow: 'none' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
             </div>
 
-            <div className="floating-blog-card card-ai">
-              <div className="fbc-img">
-                <img src="/images/blog-2.jpg" alt="AI & Automation" />
+            <div className="floating-note note-side">
+              <div className="mini-icon" style={{ background: '#f3efff', color: '#7b5cf5', display: 'grid', placeItems: 'center' }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M4 19h16v2H4zM6 16h2v-8H6zM11 16h2v-5h-2zM16 16h2V4h-2z"/></svg>
               </div>
-              <div className="fbc-content">
-                <span className="fbc-tag tag-purple">AI & Automation</span>
-                <h4>How We Use AI to Build Smarter Solutions</h4>
-                <p>From chatbots to workflow automation, explore how AI is shaping our products and processes.</p>
-                <div className="fbc-meta">
-                  <div className="fbc-author">
-                    <img src="/images/logo.png" alt="Team DevNest" />
-                    <div>
-                      <strong>Team DevNest</strong>
-                      <span>Apr 5, 2025</span>
-                    </div>
-                  </div>
-                  <button aria-label="Read more">→</button>
-                </div>
+              <div className="note-copy">
+                <span>Knowledge<br/>Drives Growth</span>
               </div>
             </div>
 
-            <div className="floating-blog-card card-intern">
-              <div className="fbc-content">
-                <span className="fbc-tag tag-blue">Intern Reviews</span>
-                <div className="intern-row">
-                  <div className="intern-text">
-                    <h4>My Internship Journey at DevNest</h4>
-                    <p>"A supportive team, real projects, and a lot of learning!"</p>
-                  </div>
-                  <div className="intern-img">
-                    <img src="/images/blog-3.jpg" alt="Intern Working" />
-                  </div>
-                </div>
-                <div className="fbc-meta">
-                  <div className="fbc-author">
-                    <div className="intern-avatar-small">AS</div>
-                    <div>
-                      <strong>Ananya S</strong>
-                      <span>Frontend Intern</span>
-                    </div>
-                  </div>
-                  <button aria-label="Read more">→</button>
-                </div>
+            <div className="floating-note note-growth">
+              <div className="mini-icon" style={{ background: '#dcfce7', color: '#16a34a', display: 'grid', placeItems: 'center' }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+              </div>
+              <div className="note-copy">
+                <span>Real Insights<br/>for Real Progress</span>
               </div>
             </div>
-
+            
+            <div className={caveat.className} style={{ position: 'absolute', left: '-32%', top: '4%', fontSize: '30px', color: '#8b97b1', transform: 'rotate(-8deg)', lineHeight: 1.2, zIndex: 10 }}>
+              Ideas<br/>Strategies<br/>Growth
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ position: 'absolute', bottom: '-20px', right: '-35px', transform: 'rotate(45deg)' }}>
+                <path d="M5 12c3-1 8-1 12 0" />
+                <path d="M12 7l5 5-5 5" />
+              </svg>
+            </div>
           </div>
         </header>
 
@@ -456,72 +438,8 @@ export default function Blogs() {
             </a>
           ))}
         </div>
-
-        <section
-          className="intern-stories reveal"
-          aria-labelledby="intern-stories-heading"
-        >
-          <div className="intern-stories-header">
-            <span className="eyebrow intern-eyebrow">
-              <span className="dot"></span>Intern stories
-            </span>
-            <h2 id="intern-stories-heading">
-              What our interns say about{" "}
-              <span className="grad-text">working here.</span>
-            </h2>
-            <p>
-              Real feedback from the people learning, building, and growing with
-              MCybernix every day.
-            </p>
-          </div>
-
-          <div className="intern-carousel-shell">
-            <button
-              className="intern-carousel-btn intern-carousel-btn-left"
-              onClick={prevIntern}
-              type="button"
-              aria-label="Previous intern stories"
-            >
-              ←
-            </button>
-
-            <div className="intern-carousel-viewport" ref={carouselRef}>
-              <div
-                className="intern-carousel-track"
-                style={{
-                  transform: `translateX(-${internIndex * cardWidth}px)`,
-                }}
-              >
-                {internStories.map((story) => (
-                  <article className="intern-story-card" key={story.name}>
-                    <div className="intern-story-top">
-                      <div className="intern-avatar" aria-hidden="true">
-                        {story.initials}
-                      </div>
-                      <div className="intern-story-meta">
-                        <h3>{story.name}</h3>
-                        <p>{story.role}</p>
-                      </div>
-                    </div>
-
-                    <p className="intern-quote">“{story.quote}”</p>
-                    <span className="intern-badge">{story.highlight}</span>
-                  </article>
-                ))}
-              </div>
-            </div>
-
-            <button
-              className="intern-carousel-btn intern-carousel-btn-right"
-              onClick={nextIntern}
-              type="button"
-              aria-label="Next intern stories"
-            >
-              →
-            </button>
-          </div>
-        </section>
       </div>
+      <InternStories />
     </section>
   );
 }

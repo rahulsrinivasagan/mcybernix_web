@@ -1,10 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsScrolledDown(true);
+      } else if (currentScrollY < lastScrollY.current) {
+        setIsScrolledDown(false);
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const pathname = usePathname();
 
   const toggleMenu = () => {
@@ -23,7 +42,7 @@ export default function Navbar() {
   const isLightPage = isAbout || isContact || isBlog;
 
   return (
-    <nav className={`nav ${isLightPage ? "nav-light" : ""}`}>
+    <nav className={`nav ${isLightPage ? "nav-light" : ""} ${isScrolledDown ? "nav-collapsed" : ""}`}>
       <div className="wrap">
         <div className="nav-shell" id="navShell">
           <a className="brand" href={isHome ? "#home" : "/"}>
@@ -58,7 +77,7 @@ export default function Navbar() {
             </a>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div className="nav-actions" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <a
               className="btn btn-primary"
               href={isHome ? "#contact" : "/contact"}
