@@ -1,6 +1,6 @@
 export default function Projects() {
   return (
-    <section className="sec" id="services">
+    <section className="sec" id="projects" style={{ scrollMarginTop: "80px" }}>
       <div className="wrap">
         <div className="head-row">
           <div>

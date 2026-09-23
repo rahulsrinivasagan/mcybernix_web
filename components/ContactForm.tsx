@@ -49,20 +49,35 @@ export default function ContactForm() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const updateField = (field: keyof FormData, value: string) => {
     setFormData((previous) => ({ ...previous, [field]: value }));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData(initialFormData);
-      setStep(1);
-      setSubmitted(false);
-    }, 3000);
+    setIsSubmitting(true);
+
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+    } catch (err) {
+      console.error("Submission error:", err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setTimeout(() => {
+        setFormData(initialFormData);
+        setStep(1);
+        setSubmitted(false);
+      }, 3500);
+    }
   };
 
   const canContinue =
@@ -207,9 +222,9 @@ export default function ContactForm() {
             <button
               type="submit"
               className="btn btn-primary form-next"
-              disabled={!canContinue}
+              disabled={!canContinue || isSubmitting}
             >
-              {submitted ? "Message sent!" : "Send enquiry"}{" "}
+              {isSubmitting ? "Sending..." : submitted ? "Message sent!" : "Send enquiry"}{" "}
               <span aria-hidden="true">→</span>
             </button>
           )}

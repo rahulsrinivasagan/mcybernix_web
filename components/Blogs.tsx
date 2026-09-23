@@ -75,60 +75,6 @@ export const blogs: Blog[] = [
     ],
   },
   {
-    slug: "team-productivity-tools",
-    category: "Productivity",
-    date: "Apr 28, 2025",
-    readTime: "4 min read",
-    title: "Top Tools That Boost Team Productivity in 2025",
-    excerpt:
-      "A considered toolkit for clearer collaboration, calmer workflows, and better work across distributed teams.",
-    image: "/images/blog-3.jpg",
-    imageAlt: "Soft sunset above the clouds",
-    sections: [
-      {
-        heading: "Tools should reduce cognitive load",
-        paragraphs: [
-          "A productivity stack is working when people spend less time asking where something lives, what happens next, or whether a task is still relevant. Every tool should make a decision easier to see.",
-          "Choose a small number of connected tools with clear ownership. The goal is not more dashboards; it is fewer places to reconstruct the truth.",
-        ],
-      },
-      {
-        heading: "Make the system visible",
-        paragraphs: [
-          "Teams move faster when priorities, blockers, and decisions are easy to find. A weekly reset, a lightweight project board, and consistent naming can do more than another feature-heavy platform.",
-          "Review the stack as a team every quarter. Keep what supports the way you work today and let go of what creates friction.",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "digital-idea-to-product",
-    category: "Digital Strategy",
-    date: "Apr 18, 2025",
-    readTime: "7 min read",
-    title: "From Digital Idea to Product People Love",
-    excerpt:
-      "The small strategic decisions that help a promising idea become a useful, durable digital product.",
-    image: "/images/proj-shop.jpg",
-    imageAlt: "A modern online storefront interface",
-    sections: [
-      {
-        heading: "Begin with the problem, not the feature",
-        paragraphs: [
-          "Strong products make a specific problem feel smaller. Before shaping a roadmap, get close to the people experiencing that problem and listen for what they already try to do.",
-          "A focused first release is not a compromise. It is a way to learn quickly enough that the product can become more useful with every iteration.",
-        ],
-      },
-      {
-        heading: "Create a rhythm for learning",
-        paragraphs: [
-          "Set a regular cadence for shipping, observing, and deciding. The most valuable product teams make space for evidence alongside instinct.",
-          "When a decision is reversible, make it quickly. Save the deeper debate for choices that shape the product's character or limit future options.",
-        ],
-      },
-    ],
-  },
-  {
     slug: "effortless-mobile-experiences",
     category: "App Development",
     date: "Apr 10, 2025",

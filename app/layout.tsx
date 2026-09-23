@@ -17,30 +17,30 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Mcybernix Solutions — Web, AI Automation & App Development",
+  title: "MCybernix Solutions — Web, AI Automation & App Development",
   description:
-    "Mcybernix Solutions builds digital products, automates workflows with AI, and creates experiences that help startups and businesses grow faster.",
+    "From custom web and app development to AI-driven workflow automation, MCybernix Solutions helps forward-thinking companies work smarter and grow faster.",
   keywords: [
     "Web Development",
     "AI Automation",
     "App Development",
-    "Mcybernix Solutions",
+    "MCybernix Solutions",
     "Software Startup",
     "Digital Products",
   ],
-  authors: [{ name: "Mcybernix Solutions" }],
+  authors: [{ name: "MCybernix Solutions" }],
   openGraph: {
-    title: "Mcybernix Solutions — Work Smarter Together",
+    title: "MCybernix Solutions — We Build, Automate, and Scale Your Next Digital Advantage",
     description:
-      "Web development, AI automation and app development for modern businesses.",
+      "From custom web and app development to AI-driven workflow automation, MCybernix Solutions helps forward-thinking companies work smarter and grow faster.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mcybernix Solutions — Work Smarter Together",
+    title: "MCybernix Solutions — We Build, Automate, and Scale Your Next Digital Advantage",
     description:
-      "Web development, AI automation and app development for modern businesses.",
+      "From custom web and app development to AI-driven workflow automation, MCybernix Solutions helps forward-thinking companies work smarter and grow faster.",
   },
   icons: {
     icon: "/images/logo.png",

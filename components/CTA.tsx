@@ -7,13 +7,13 @@ export default function CTA() {
           <span className="glow g2"></span>
           <div>
             <h2 style={{ fontSize: "clamp(24px,3vw,36px)" }}>
-              Ready to build something
+              Ready to Automate &amp;
               <br />
-              amazing together?
+              Scale Your Business?
             </h2>
             <p>Let's turn your ideas into powerful digital solutions.</p>
           </div>
-          <a className="btn btn-primary" href="mailto:hello@mcybernix.com">
+          <a className="btn btn-primary" href="mailto:mcybernixsolutions@gmail.com">
             Let's Talk <span className="ic">→</span>
           </a>
         </div>

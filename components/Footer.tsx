@@ -84,21 +84,17 @@ export default function Footer() {
               </span>
             </a>
             <p>
-              We help startups and businesses build, automate, and grow with
-              smart digital solutions.
+              We build, automate, and scale digital products that help
+              forward-thinking companies work smarter and grow faster.
             </p>
             <div className="socials">
-              <a aria-label="LinkedIn" href="/contact">
+              <a
+                aria-label="LinkedIn"
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 in
-              </a>
-              <a aria-label="X" href="/contact">
-                ✕
-              </a>
-              <a aria-label="GitHub" href="/contact">
-                ◍
-              </a>
-              <a aria-label="Instagram" href="/contact">
-                ◎
               </a>
             </div>
           </div>
@@ -164,7 +160,7 @@ export default function Footer() {
         </div>
 
         <div className="f-bot">
-          <span>© 2026 Mcybernix Solutions. All rights reserved.</span>
+          <span>© 2026 MCybernix Solutions. All rights reserved.</span>
         </div>
       </div>
     </footer>

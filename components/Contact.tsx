@@ -33,7 +33,7 @@ export default function Contact() {
           <div className="faq-header reveal">
             <h2>Frequently Asked Questions</h2>
             <p>
-              Everything you need to know before enrolling. Clear answers, no
+              Everything you need to know about working with us. Clear answers, no
               fluff.
             </p>
           </div>

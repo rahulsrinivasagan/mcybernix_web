@@ -61,20 +61,20 @@ export default function Insights() {
 
           <article className="post reveal">
             <div className="post-img">
-              <span className="tag">Productivity</span>
+              <span className="tag">App Development</span>
               <img
-                alt="Soft sunset above the clouds"
+                alt="An education platform displayed on a laptop"
                 height={768}
                 loading="lazy"
-                src="/images/blog-3.jpg"
+                src="/images/proj-edu.jpg"
                 width={1024}
               />
             </div>
             <div className="post-body">
-              <h4>Top Tools That Boost Team Productivity in 2025</h4>
+              <h4>Designing Mobile Experiences That Feel Effortless</h4>
               <div className="meta">
-                <span>Apr 28, 2025</span>
-                <span>4 min read</span>
+                <span>Apr 10, 2025</span>
+                <span>5 min read</span>
               </div>
             </div>
           </article>

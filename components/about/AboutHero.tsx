@@ -17,7 +17,7 @@ export default function AboutHero() {
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M3 12c4-7 10-8 18-6-1 8-6 13-13 12 3-2 6-5 8-9-4 3-7 5-10 6-1 1-2 1-3 1Z" />
             </svg>
-            About Us
+            ABOUT MCYBERNIX
           </span>
           <h1 className={styles.heroHeading}>
             <span className={styles.heroHeadingLine}>
@@ -27,28 +27,28 @@ export default function AboutHero() {
             </span>
             <span className={styles.heroHeadingLine}>
               <span className={styles.heroHeadingInner} data-about-hero="line">
-                Experiences That
+                Products That
               </span>
             </span>
             <span className={styles.heroHeadingLine}>
               <span className={styles.heroHeadingInner} data-about-hero="line">
-                Move Businesses
+                Propel Businesses
               </span>
             </span>
             <span className={styles.heroHeadingLine}>
               <span className={styles.heroHeadingInner} data-about-hero="line">
-                Forward.
+                Forward
               </span>
             </span>
           </h1>
           <p data-about-hero="paragraph">
-            At Mcybernix Solutions, we combine creativity, technology, and
-            strategy to build digital products that help startups and
-            businesses grow, scale, and lead in their industries.
+            At MCybernix Solutions, we combine engineering excellence, AI
+            intelligence, and human-centered design to help startups and
+            enterprises scale, automate, and lead.
           </p>
           <div data-about-hero="cta">
-            <a className={styles.btn} href="#contact">
-              Get in touch <span className={styles.arrow} aria-hidden="true">→</span>
+            <a className={styles.btn} href="/contact">
+              Get in Touch <span className={styles.arrow} aria-hidden="true">→</span>
             </a>
           </div>
         </div>

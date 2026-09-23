@@ -10,44 +10,39 @@ export default function AboutWhyUs() {
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M3 12c4-7 10-8 18-6-1 8-6 13-13 12 3-2 6-5 8-9-4 3-7 5-10 6-1 1-2 1-3 1Z" />
               </svg>
-              Why Choose Mcybernix
+              WHY MCYBERNIX
             </span>
             <h2 className={styles.sectionTitle} data-about-why="item">
               Your Vision.
               <br />
-              Our Expertise.
+              Our Engineering.
               <br />
-              Endless Possibilities.
+              Scalable Results.
             </h2>
-            <p data-about-why="item">
-              We bring together strategy, design, and technology to build
-              digital experiences that create real business value. From
-              startups to enterprises, we're the partner you can rely on.
-            </p>
             <ul className={styles.checks}>
               <li data-about-why="checkItem">
                 <span className={styles.check} data-about-why="checkIcon" aria-hidden="true">
                   ✓
                 </span>
-                Experienced and passionate team
+                End-to-End Capabilities (AI, Web &amp; Mobile)
               </li>
               <li data-about-why="checkItem">
                 <span className={styles.check} data-about-why="checkIcon" aria-hidden="true">
                   ✓
                 </span>
-                Tailored solutions for your business
+                Agile, Deadline-Driven Execution
               </li>
               <li data-about-why="checkItem">
                 <span className={styles.check} data-about-why="checkIcon" aria-hidden="true">
                   ✓
                 </span>
-                Transparent communication
+                Scalable Architecture Built for High Traffic
               </li>
               <li data-about-why="checkItem">
                 <span className={styles.check} data-about-why="checkIcon" aria-hidden="true">
                   ✓
                 </span>
-                On-time delivery and support
+                Dedicated Post-Launch Support &amp; Maintenance
               </li>
             </ul>
           </div>

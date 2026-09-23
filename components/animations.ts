@@ -93,27 +93,27 @@ export function initMcybernixAnimations() {
     }
 
     /* ==========================================================
-       2. HOME: SERVICES / WHAT WE DO SECTION (#about)
+       2. HOME: SERVICES / OUR EXPERTISE SECTION (#services)
        ========================================================== */
-    const aboutSec = document.getElementById("about");
+    const servicesSec = document.getElementById("services");
     const stackOuter = document.getElementById("stackOuter");
     const svc1 = document.getElementById("svc1");
     const svc2 = document.getElementById("svc2");
     const svc3 = document.getElementById("svc3");
     const cards = [svc1, svc2, svc3].filter(Boolean) as HTMLElement[];
 
-    if (aboutSec && cards.length === 3) {
+    if (servicesSec && cards.length === 3) {
       // 1. Initial entrance: Left elements and Card 1 enter concurrently (no delay!)
       const wwdEntrance = gsap.timeline({
         scrollTrigger: {
-          trigger: aboutSec,
+          trigger: servicesSec,
           start: "top 78%",
           once: true,
         },
         defaults: { ease: "power3.out" },
       });
 
-      const leftItems = aboutSec.querySelectorAll(
+      const leftItems = servicesSec.querySelectorAll(
         ".wwd-left .eyebrow, .wwd-left h2, .wwd-left .rule, .wwd-left .lead, .wwd-left .benefit, .wwd-left .btn"
       );
       if (leftItems.length > 0) {
@@ -148,7 +148,7 @@ export function initMcybernixAnimations() {
 
         const stackTl = gsap.timeline({
           scrollTrigger: {
-            trigger: aboutSec,
+            trigger: servicesSec,
             start: "top top",
             end: "+=2200",
             pin: true,
@@ -289,9 +289,9 @@ export function initMcybernixAnimations() {
     }
 
     /* ==========================================================
-       4. HOME: PROJECTS SECTION (#services)
+       4. HOME: PROJECTS SECTION (#projects)
        ========================================================== */
-    const projSec = document.getElementById("services");
+    const projSec = document.getElementById("projects");
     if (projSec) {
       const projTl = gsap.timeline({
         scrollTrigger: {

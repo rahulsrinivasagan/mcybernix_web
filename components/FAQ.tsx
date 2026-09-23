@@ -5,27 +5,33 @@ import { useState } from "react";
 const faqItems = [
   {
     id: 1,
-    question: "Is mobile-friendly design important?",
+    question: "How long does it take to complete a project?",
     answer:
-      "Yes, responsive design ensures your site automatically adjusts to fit mobile phones and tablets. This improves user experience and helps your search engine rankings.",
+      "Timelines depend on the scope and complexity of the project. A custom web application or landing page typically takes 2–4 weeks, while complex mobile apps or custom AI workflow automations take 4–8 weeks. We provide a detailed project roadmap with clear milestones before starting.",
   },
   {
     id: 2,
-    question: "Can I edit my website without coding knowledge?",
+    question: "What is AI Automation, and how can it benefit my business?",
     answer:
-      "Yes, if your site is built on a Content Management System like WordPress, you can easily change text, swap images, and add blog posts without knowing how to code.",
+      "AI Automation uses modern AI tools, machine learning, and custom API integrations to automate repetitive, manual business processes. This helps your team reduce manual effort by up to 80%, cut operational costs, and accelerate workflows like customer support, data entry, and lead processing.",
   },
   {
     id: 3,
-    question: "What are the recurring costs?",
+    question: "Can I update and edit my website on my own after launch?",
     answer:
-      "You must pay yearly for your domain name and web hosting. Other ongoing costs can include SSL security certificates and premium plugin or theme licenses.",
+      "Yes! We build with intuitive Content Management Systems (CMS) or user-friendly admin dashboards so you can easily update text, manage images, add blog posts, or publish new products without needing any coding knowledge.",
   },
   {
     id: 4,
-    question: "How long does it take to build a website?",
+    question: "Do you build mobile apps for both iOS and Android?",
     answer:
-      "A standard business site takes about two to eight weeks. Simple sites using a content management system (CMS) can launch in a few days, while complex web portals take a month or more.",
+      "Absolutely. We specialize in cross-platform mobile app development (using modern frameworks like React Native or Flutter), allowing us to deliver high-performance, native-like iOS and Android apps simultaneously—saving you time and development budget.",
+  },
+  {
+    id: 5,
+    question: "What are the recurring costs after a project is completed?",
+    answer:
+      "Recurring costs generally include web hosting, domain registration, and third-party API usage (like OpenAI or database servers) if applicable. We offer flexible post-launch support and maintenance packages to handle security updates, backups, and feature enhancements.",
   },
 ];
 
@@ -60,8 +66,8 @@ export default function FAQ() {
 
   return (
     <div className="faq-grid">
-      <div className="faq-column">{faqItems.slice(0, 2).map(renderItem)}</div>
-      <div className="faq-column">{faqItems.slice(2).map(renderItem)}</div>
+      <div className="faq-column">{faqItems.slice(0, 3).map(renderItem)}</div>
+      <div className="faq-column">{faqItems.slice(3).map(renderItem)}</div>
     </div>
   );
 }
