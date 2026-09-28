@@ -335,7 +335,7 @@ export default function Blogs() {
               </div>
             </div>
             
-            <div className={caveat.className} style={{ position: 'absolute', left: '-32%', top: '4%', fontSize: '30px', color: '#8b97b1', transform: 'rotate(-8deg)', lineHeight: 1.2, zIndex: 10 }}>
+            <div className={`${caveat.className} floating-callout callout-left`} style={{ fontSize: '30px', color: '#8b97b1', lineHeight: 1.2, zIndex: 10 }}>
               Ideas<br/>Strategies<br/>Growth
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ position: 'absolute', bottom: '-20px', right: '-35px', transform: 'rotate(45deg)' }}>
                 <path d="M5 12c3-1 8-1 12 0" />

@@ -70,7 +70,7 @@
 }
 
 .sectionTitle {
-  font-size: 34px;
+  font-size: clamp(24px, 3.5vw, 34px);
   line-height: 1.2;
   letter-spacing: 0;
   margin: 0 0 22px;
@@ -189,7 +189,7 @@
 }
 
 .heroHeading {
-  font-size: 47px;
+  font-size: clamp(28px, 4.5vw, 47px);
   line-height: 1.17;
   margin: 0 0 19px;
   max-width: 570px;
@@ -647,12 +647,7 @@
     object-position: 68% center;
   }
   .hero::after {
-    background: linear-gradient(
-      180deg,
-      #fff 0%,
-      rgba(255, 255, 255, 0.93) 44%,
-      rgba(255, 255, 255, 0) 67%
-    );
+    display: none;
   }
   .heroContent {
     width: 100%;
@@ -772,12 +767,16 @@
   }
   .valueCard {
     min-height: 0;
+    padding: 24px 22px;
+  }
+  .valueCard p {
+    margin-left: 0;
   }
   .whyBox {
     padding: 24px;
   }
   .whyCopy .sectionTitle {
-    font-size: 27px;
+    font-size: clamp(22px, 6vw, 27px);
   }
   .whyImage {
     height: 235px;
@@ -788,10 +787,53 @@
     padding: 28px 24px;
   }
   .cta h2 {
-    font-size: 21px;
+    font-size: clamp(18px, 5vw, 21px);
   }
   .cta .btn {
     justify-self: start;
+  }
+  .stat strong {
+    font-size: 24px;
+  }
+  .storyImage {
+    height: 280px;
+  }
+  .heroContent p {
+    font-size: 12.5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    width: min(calc(100% - 24px), var(--container));
+  }
+  .section {
+    padding: 40px 0;
+  }
+  .heroImgWrap,
+  .heroImg {
+    height: 200px;
+  }
+  .heroContent {
+    padding: 22px 18px;
+  }
+  .heroHeading {
+    font-size: 26px;
+  }
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 20px 0;
+  }
+  .stat + .stat {
+    border-left: 0;
+    border-top: 1px solid var(--card-border);
+    padding-top: 16px;
+  }
+  .storyImage {
+    height: 220px;
+  }
+  .whyImage {
+    height: 200px;
   }
 }
 

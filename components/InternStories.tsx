@@ -78,40 +78,40 @@ export default function InternStories() {
     setActiveIndex((prev) => (prev - 1 + internData.length) % internData.length);
   };
 
-  const getCardStyle = (index: number) => {
+  const getCardStyle = (index: number): React.CSSProperties => {
     const relIndex = (index - activeIndex + internData.length) % internData.length;
-    
+
     if (relIndex === 0) {
       return {
-        transform: 'translateX(0px) translateY(0px) scale(1)',
+        transform: "translateX(0px) translateY(0px) scale(1)",
         zIndex: 10,
         opacity: 1,
       };
     }
     if (relIndex === 1) {
       return {
-        transform: 'translateX(240px) translateY(30px) scale(0.9)',
+        transform: "translateX(var(--base-offset)) translateY(var(--y-step)) scale(0.9)",
         zIndex: 9,
         opacity: 1,
       };
     }
     if (relIndex === 2) {
       return {
-        transform: 'translateX(450px) translateY(60px) scale(0.8)',
+        transform: "translateX(calc(var(--base-offset) * 1.85)) translateY(calc(var(--y-step) * 2)) scale(0.8)",
         zIndex: 8,
-        opacity: 0.9,
+        opacity: "var(--op-2, 0.9)" as unknown as number,
       };
     }
     if (relIndex === 3) {
       return {
-        transform: 'translateX(630px) translateY(90px) scale(0.7)',
+        transform: "translateX(calc(var(--base-offset) * 2.6)) translateY(calc(var(--y-step) * 3)) scale(0.7)",
         zIndex: 7,
-        opacity: 0.8,
+        opacity: "var(--op-3, 0.8)" as unknown as number,
       };
     }
-    
+
     return {
-      transform: 'translateX(800px) translateY(120px) scale(0.6)',
+      transform: "translateX(calc(var(--base-offset) * 3.3)) translateY(calc(var(--y-step) * 4)) scale(0.6)",
       zIndex: 6,
       opacity: 0,
     };

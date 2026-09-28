@@ -125,6 +125,10 @@
 }
 
 .sliderTrack {
+  --base-offset: 240px;
+  --y-step: 30px;
+  --op-2: 0.9;
+  --op-3: 0.8;
   position: relative;
   height: 520px;
   width: 100%;
@@ -333,8 +337,176 @@
 @media (max-width: 1024px) {
   .headerContent {
     flex-direction: column;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+  .textContent {
+    flex: 1;
+    max-width: none;
   }
   .sliderContainer {
     width: 100%;
+  }
+  .title {
+    font-size: clamp(32px, 5vw, 48px);
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 0 16px;
+    margin: 30px auto;
+  }
+  .headerContent {
+    margin-bottom: 40px;
+    gap: 24px;
+  }
+  .title {
+    font-size: clamp(28px, 6vw, 40px);
+    margin-bottom: 18px;
+  }
+  .description {
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+  .sliderTrack {
+    --base-offset: 200px;
+    --op-3: 0;
+    height: 480px;
+  }
+  .card {
+    width: 280px;
+  }
+  .imageWrapper {
+    height: 200px;
+    margin-bottom: 18px;
+  }
+  .cardText {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .sliderControls {
+    margin-top: 24px;
+  }
+  .viewAllBtn {
+    font-size: 14px;
+    gap: 12px;
+  }
+  .viewAllIcon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 660px) {
+  .wrapper {
+    padding: 0 12px;
+    margin: 20px auto;
+  }
+  .headerContent {
+    margin-bottom: 30px;
+  }
+  .title {
+    font-size: clamp(24px, 7vw, 34px);
+    margin-bottom: 14px;
+  }
+  .description {
+    font-size: 13px;
+    margin-bottom: 22px;
+  }
+  .badge {
+    font-size: 11px;
+    padding: 6px 14px;
+    margin-bottom: 18px;
+  }
+  .sliderTrack {
+    --base-offset: 170px;
+    --y-step: 20px;
+    --op-2: 0.5;
+    height: 460px;
+  }
+  .card {
+    width: 260px;
+  }
+  .imageWrapper {
+    height: 180px;
+    margin-bottom: 14px;
+  }
+  .quoteMark {
+    font-size: 44px;
+    margin-top: -14px;
+    margin-bottom: 6px;
+  }
+  .cardText {
+    font-size: 12.5px;
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .cardFooter {
+    padding-top: 12px;
+    gap: 10px;
+  }
+  .authorImage {
+    width: 34px;
+    height: 34px;
+  }
+  .authorName {
+    font-size: 13px;
+  }
+  .authorRole, .authorDate {
+    font-size: 10px;
+  }
+  .cardArrowBtn {
+    width: 28px;
+    height: 28px;
+  }
+  .navBtn {
+    width: 38px;
+    height: 38px;
+  }
+  .sliderControls {
+    margin-top: 16px;
+  }
+  .handwriting {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 0 8px;
+  }
+  .sliderTrack {
+    --base-offset: 140px;
+    height: 440px;
+  }
+  .card {
+    width: 240px;
+  }
+  .imageWrapper {
+    height: 160px;
+  }
+  .card {
+    padding: 12px;
+    border-radius: 18px;
+  }
+  .cardTag {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+  .title {
+    font-size: clamp(22px, 6.5vw, 30px);
+  }
+}
+
+@media (max-width: 360px) {
+  .card {
+    width: 220px;
+  }
+  .sliderTrack {
+    height: 420px;
+  }
+  .imageWrapper {
+    height: 140px;
   }
 }
