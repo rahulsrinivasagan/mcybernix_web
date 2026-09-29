@@ -1,14 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { useState } from "react";
 
 export default function Footer() {
   const [subscribed, setSubscribed] = useState(false);
   const [email, setEmail] = useState("");
-  const footerRef = useRef<HTMLElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,55 +14,10 @@ export default function Footer() {
     }
   };
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    gsap.registerPlugin(ScrollTrigger);
-
-    const footerEl = footerRef.current;
-    if (!footerEl) return;
-
-    // Play smooth staggered entry animation
-    const playFooterEntry = () => {
-      const items = footerEl.querySelectorAll(
-        ".f-brand, .f-col, .news, .f-bot"
-      );
-      if (items.length === 0) return;
-
-      gsap.killTweensOf(items);
-
-      gsap.fromTo(
-        items,
-        {
-          opacity: 0,
-          y: 35,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.85,
-          stagger: 0.08,
-          ease: "power3.out",
-        }
-      );
-    };
-
-    // ScrollTrigger: only triggers when user scrolls into the footer, not on top reload
-    const st = ScrollTrigger.create({
-      trigger: footerEl,
-      start: "top 90%",
-      once: true,
-      onEnter: () => playFooterEntry(),
-    });
-
-    return () => {
-      st.kill();
-    };
-  }, []);
-
   return (
-    <footer ref={footerRef}>
+    <footer>
       <div className="wrap">
-        <div className="f-grid" ref={gridRef}>
+        <div className="f-grid">
           <div className="f-brand">
             <a className="brand" href="/">
               <span className="brand-mark">
@@ -90,11 +41,32 @@ export default function Footer() {
             <div className="socials">
               <a
                 aria-label="LinkedIn"
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/mcybernixsolutions/posts/?feedView=all"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="LinkedIn"
               >
                 in
+              </a>
+              <a
+                aria-label="Email Us"
+                href="mailto:mcybernixsolutions@gmail.com"
+                title="Email Us"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
               </a>
             </div>
           </div>
@@ -113,13 +85,6 @@ export default function Footer() {
             <a href="/#services">Web Development</a>
             <a href="/#services">AI Automation</a>
             <a href="/#services">App Development</a>
-          </div>
-
-          <div className="f-col">
-            <h5>Company</h5>
-            <a href="/contact">Careers</a>
-            <a href="/contact">Privacy Policy</a>
-            <a href="/contact">Terms &amp; Conditions</a>
           </div>
 
           <div className="news">

@@ -135,62 +135,9 @@ const categories = [
   ...Array.from(new Set(blogs.map((blog) => blog.category))),
 ];
 
-const internStories = [
-  {
-    name: "Siddhesh Prakash",
-    role: "Full Stack Intern",
-    initials: "SP",
-    highlight: "Built real client features",
-    quote:
-      "The team gave me ownership early on, and I got to ship features that actually mattered to our clients. It felt like a real product environment from day one.",
-  },
-  {
-    name: "Krishna Deepthi",
-    role: "Full Stack Intern",
-    initials: "KD",
-    highlight: "Learned product thinking",
-    quote:
-      "I learned how design decisions connect to business outcomes. Every review session helped sharpen my thinking and gave me confidence in my work.",
-  },
-  {
-    name: "Gayathri Krishna",
-    role: "Marketing Intern",
-    initials: "GK",
-    highlight: "Worked across brand and strategy",
-    quote:
-      "The culture here is collaborative and encouraging. I was trusted with meaningful work, and my ideas were listened to, tested, and improved with guidance.",
-  },
-  {
-    name: "Rahul S",
-    role: "Full Stack Intern",
-    initials: "S",
-    highlight: "Explored user-centered design",
-    quote:
-      "I was encouraged to solve real user problems, not just make things look good. The feedback loop here made me more thoughtful and confident in my design process.",
-  },
-  {
-    name: "Shivani D",
-    role: "App Development Intern",
-    initials: "D",
-    highlight: "Created campaigns that mattered",
-    quote:
-      "Working here taught me how creative ideas turn into measurable business impact. I got to contribute to actual campaigns and see the results come together.",
-  }, {
-    name: "Joseph Gabriel",
-    role: "App Development Intern",
-    initials: "JG",
-    highlight: "Created campaigns that mattered",
-    quote:
-      "Working here taught me how creative ideas turn into measurable business impact. I got to contribute to actual campaigns and see the results come together.",
-  },
-];
-
 export default function Blogs() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [internIndex, setInternIndex] = useState(0);
-  const [cardWidth, setCardWidth] = useState(0);
-  const carouselRef = useRef<HTMLDivElement | null>(null);
   const filteredBlogs = blogs.filter((blog) => {
     const matchesCategory = activeCategory === "All" || blog.category === activeCategory;
     const matchesSearch =
@@ -215,31 +162,6 @@ export default function Blogs() {
       },
     );
   }, [activeCategory]);
-
-  useEffect(() => {
-    const updateCardWidth = () => {
-      if (!carouselRef.current) return;
-      const firstCard = carouselRef.current.querySelector(
-        ".intern-story-card",
-      ) as HTMLElement | null;
-      if (!firstCard) return;
-      const gap = 22;
-      setCardWidth(firstCard.getBoundingClientRect().width + gap);
-    };
-
-    updateCardWidth();
-    window.addEventListener("resize", updateCardWidth);
-    return () => window.removeEventListener("resize", updateCardWidth);
-  }, []);
-
-  const maxIndex = Math.max(0, internStories.length - 3);
-  const nextIntern = () => {
-    setInternIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-  };
-
-  const prevIntern = () => {
-    setInternIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-  };
 
   return (
     <section className="blogs-section">

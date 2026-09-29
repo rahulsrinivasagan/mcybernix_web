@@ -13,7 +13,7 @@ export function initMcybernixAnimations() {
 
   if (prefersReducedMotion) {
     const allReveals = document.querySelectorAll(
-      ".reveal, .proj, .svc-card, .stat, .hero-el, .hero-avatar-el, .cta, .post, .faq-item, .contact-hero-el, .article-hero-el"
+      ".reveal, .proj, .svc-card, .stat, .hero-el, .hero-avatar-el, .cta, .post, .faq-item, .contact-hero-el, .article-hero-el, footer, .f-brand, .f-col, .news, .f-bot, .tst-header, .tst-canvas"
     );
     allReveals.forEach((el) => {
       (el as HTMLElement).style.opacity = "1";
@@ -103,7 +103,7 @@ export function initMcybernixAnimations() {
     const cards = [svc1, svc2, svc3].filter(Boolean) as HTMLElement[];
 
     if (servicesSec && cards.length === 3) {
-      // 1. Initial entrance: Left elements and Card 1 enter concurrently (no delay!)
+      // 1. Initial entrance: Left elements and Card 1 enter concurrently
       const wwdEntrance = gsap.timeline({
         scrollTrigger: {
           trigger: servicesSec,
@@ -158,8 +158,8 @@ export function initMcybernixAnimations() {
           },
         });
 
-        // Phase 1 (0.0 to 0.4): Card 1 is active and readable
-        // Phase 2 (0.4 to 1.1): Card 2 slides in smoothly over Card 1
+        // Phase 1: Card 1 active
+        // Phase 2: Card 2 slides in smoothly over Card 1
         stackTl.to(
           svc2,
           {
@@ -182,10 +182,7 @@ export function initMcybernixAnimations() {
           0.4
         );
 
-        // Phase 3 (1.1 to 1.7): Card 2 is SHOWCASED ALONE (reading window for Card 2)
-        // Nothing moves during this window, ensuring Card 2 is fully appreciated!
-
-        // Phase 4 (1.7 to 2.4): Card 3 slides in smoothly over Card 2
+        // Phase 4: Card 3 slides in smoothly over Card 2
         stackTl.to(
           svc3,
           {
@@ -218,9 +215,6 @@ export function initMcybernixAnimations() {
           },
           1.7
         );
-
-        // Phase 5 (2.4 to 3.0): Card 3 is SHOWCASED ALONE (reading window for Card 3)
-        // Card 3 is fully visible and stationary before the section unpins!
 
         return () => {
           if (stackOuter) {
@@ -335,7 +329,53 @@ export function initMcybernixAnimations() {
     }
 
     /* ==========================================================
-       5. HOME: CTA SECTION (#contact)
+       5. HOME: TESTIMONIALS SECTION (#testimonials)
+       ========================================================== */
+    const tstSec = document.getElementById("testimonials");
+    if (tstSec) {
+      const tstHeader = tstSec.querySelector(".tst-header");
+      const tstCanvas = tstSec.querySelector(".tst-canvas");
+
+      if (tstHeader) {
+        gsap.fromTo(
+          tstHeader,
+          { opacity: 0, y: 24 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.75,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: tstSec,
+              start: "top 80%",
+              once: true,
+            },
+          }
+        );
+      }
+
+      if (tstCanvas) {
+        gsap.fromTo(
+          tstCanvas,
+          { opacity: 0, y: 30, scale: 0.98 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.85,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: tstSec,
+              start: "top 78%",
+              once: true,
+            },
+          }
+        );
+      }
+    }
+
+    /* ==========================================================
+       6. HOME: CTA SECTION (#contact)
        ========================================================== */
     const ctaSec = document.getElementById("contact");
     if (ctaSec) {
@@ -369,7 +409,7 @@ export function initMcybernixAnimations() {
     }
 
     /* ==========================================================
-       6. CONTACT PAGE ANIMATIONS (.contact-section)
+       7. CONTACT PAGE ANIMATIONS (.contact-section)
        ========================================================== */
     const contactSection = document.querySelector(".contact-section");
     if (contactSection) {
@@ -436,36 +476,16 @@ export function initMcybernixAnimations() {
     }
 
     /* ==========================================================
-       7. BLOG PAGE ANIMATIONS (.blog-page)
+       8. BLOG PAGE ANIMATIONS (.blog-page, .blogs-section)
        ========================================================== */
-    const blogPage = document.querySelector(".blog-page");
+    const blogPage = document.querySelector(".blog-page, .blogs-section");
     if (blogPage) {
-      const blogHeroEls = blogPage.querySelectorAll(".blog-hero-el");
+      const blogHeroEls = blogPage.querySelectorAll(".blog-hero-el, .blog-hero-badge, .blogs-title, .blogs-subtitle, .blog-search, .popular-topics, .blogs-hero-visual");
       if (blogHeroEls.length > 0) {
         gsap.fromTo(
           blogHeroEls,
           { y: 26, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.85, stagger: 0.1, ease: "power3.out" }
-        );
-      }
-
-      const featured = blogPage.querySelector(".featured-blog");
-      if (featured) {
-        gsap.fromTo(
-          featured,
-          { y: 30, opacity: 0, scale: 0.98 },
-          {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 0.9,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: featured,
-              start: "top 82%",
-              once: true,
-            },
-          }
         );
       }
 
@@ -510,7 +530,32 @@ export function initMcybernixAnimations() {
     }
 
     /* ==========================================================
-       8. BLOG ARTICLE PAGE ANIMATIONS (.article-page)
+       9. INTERN STORIES SECTION ENTRANCE (#intern-stories)
+       ========================================================== */
+    const internSec = document.getElementById("intern-stories");
+    if (internSec) {
+      const internHeader = internSec.querySelector("[class*='headerContent']");
+      if (internHeader) {
+        gsap.fromTo(
+          internHeader,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.85,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: internSec,
+              start: "top 80%",
+              once: true,
+            },
+          }
+        );
+      }
+    }
+
+    /* ==========================================================
+       10. BLOG ARTICLE PAGE ANIMATIONS (.article-page)
        ========================================================== */
     const articlePage = document.querySelector(".article-page");
     if (articlePage) {
@@ -556,6 +601,34 @@ export function initMcybernixAnimations() {
             scrollTrigger: {
               trigger: layout,
               start: "top 80%",
+              once: true,
+            },
+          }
+        );
+      }
+    }
+
+    /* ==========================================================
+       11. GLOBAL FOOTER ANIMATION (Smooth staggered viewport entrance)
+       ========================================================== */
+    const footerEl = document.querySelector("footer");
+    if (footerEl) {
+      const footerItems = footerEl.querySelectorAll(
+        ".f-brand, .f-col, .news, .f-bot"
+      );
+      if (footerItems.length > 0) {
+        gsap.fromTo(
+          footerItems,
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.75,
+            stagger: 0.08,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: footerEl,
+              start: "top 92%",
               once: true,
             },
           }

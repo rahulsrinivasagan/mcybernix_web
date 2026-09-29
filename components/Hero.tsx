@@ -81,43 +81,43 @@ export default function Hero() {
       <div className="hero-avatars" aria-hidden="true">
         <div className="avatar avatar-1 float-med hero-avatar-el">
           <img
-            src="/images/avatars/avatar-1.jpg"
-            alt="Team member"
+            src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&h=300&fit=crop&q=80"
+            alt="AI and Digital Technology"
             loading="eager"
           />
         </div>
         <div className="avatar avatar-2 float-fast hero-avatar-el">
           <img
-            src="/images/avatars/avatar-2.jpg"
-            alt="Team member"
+            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=300&h=300&fit=crop&q=80"
+            alt="Software Development and Coding"
             loading="eager"
           />
         </div>
         <div className="avatar avatar-3 float-slow hero-avatar-el">
           <img
-            src="/images/avatars/avatar-3.jpg"
-            alt="Team member"
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=300&fit=crop&q=80"
+            alt="Cloud Computing and Global Network"
             loading="eager"
           />
         </div>
         <div className="avatar avatar-4 float-slow hero-avatar-el">
           <img
-            src="/images/avatars/avatar-4.jpg"
-            alt="Team member"
+            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=300&h=300&fit=crop&q=80"
+            alt="Cybersecurity and Data Science"
             loading="eager"
           />
         </div>
         <div className="avatar avatar-5 float-med hero-avatar-el">
           <img
-            src="/images/avatars/avatar-5.jpg"
-            alt="Team member"
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=300&fit=crop&q=80"
+            alt="Data Analytics and Modern Interfaces"
             loading="eager"
           />
         </div>
         <div className="avatar avatar-6 float-fast hero-avatar-el">
           <img
-            src="/images/avatars/avatar-6.jpg"
-            alt="Team member"
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&h=300&fit=crop&q=80"
+            alt="Automation and Hardware Systems"
             loading="eager"
           />
         </div>

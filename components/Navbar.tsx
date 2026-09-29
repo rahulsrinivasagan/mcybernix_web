@@ -6,8 +6,12 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolledDown, setIsScrolledDown] = useState(false);
+  const pathname = usePathname();
 
+  // Scroll listener: toggle mini capsule and auto-close mobile menu on scroll
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY > 60) {
@@ -15,6 +19,12 @@ export default function Navbar() {
       } else {
         setIsScrolledDown(false);
       }
+
+      // Automatically collapse mobile menu when user starts scrolling
+      if (Math.abs(currentScrollY - lastScrollY) > 8) {
+        setIsOpen(false);
+      }
+      lastScrollY = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -22,7 +32,33 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const pathname = usePathname();
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  // Close mobile menu on clicking outside
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        !target.closest("#mobileMenu") &&
+        !target.closest("#burger")
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick, { passive: true });
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, [isOpen]);
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);

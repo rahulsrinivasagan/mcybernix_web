@@ -54,9 +54,9 @@ export default function Services() {
 
           <a
             className="btn btn-primary reveal wwd-btn"
-            href="/contact"
+            href="/about"
           >
-            Explore All Services <span className="ic">→</span>
+            Explore Our Services <span className="ic">→</span>
           </a>
         </div>
 

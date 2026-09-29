@@ -16,7 +16,7 @@ export default function ContactInfo() {
         <p>Stay updated with our latest news</p>
         <div className="social-links">
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/company/mcybernixsolutions/posts/?feedView=all"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"

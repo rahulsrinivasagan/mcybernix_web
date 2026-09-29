@@ -23,9 +23,6 @@ export default function ServiceCard({
         <div className="num">{num}</div>
         <h3>{title}</h3>
         <p>{description}</p>
-        <a aria-label={title} className="circ" href={href}>
-          →
-        </a>
       </div>
       <div className="svc-art">
         <img
